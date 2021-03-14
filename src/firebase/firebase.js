@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
 import api from "./api";
 import { appActions } from "../data/appActions";
 import { getPlayerData } from "../data/playerEffects";
@@ -37,7 +36,7 @@ export const signOutFromAuth = () => {
   firebase.auth().signOut();
 };
 
-export const signin = (email, password, alert, dispatch) => {
+export const signin = (email, password, dispatch) => {
   dispatch({ type: appActions.APP_IS_LOADING });
   return firebase
     .auth()
@@ -55,8 +54,7 @@ export const signup = (
   email,
   password,
   playerName,
-  alert,
-  dispatch
+  dispatch,
 ) => {
   dispatch({ type: appActions.APP_IS_LOADING });
   return firebase
@@ -64,10 +62,12 @@ export const signup = (
     .createUserWithEmailAndPassword(email, password)
     .then((userCreds) => {
       // Create the player in firestore
-      api.createPlayer(userCreds.user.uid, playerName).then(() => {
+      api.createPlayer(userCreds.user.uid, playerName)
+      .then(() => {
         console.log(userCreds.user.uid);
-        alert("Success", "Your account was successfuly created!");
         dispatch(getPlayerData());
+        
+        
       });
     })
     .catch((err) => {
