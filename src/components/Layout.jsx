@@ -22,13 +22,16 @@ export default function Layout({ children }) {
             </Header>
           </Menu.Item>
 
-          <Menu.Item as={Link} to="/">
-            Home
-          </Menu.Item>
+
           { isAuthenticated ? 
-          <Menu.Item as={Link} to="/profile">
-            Profile
-          </Menu.Item>
+          <>
+            <Menu.Item as={Link} to="/">
+              Home
+            </Menu.Item>
+            <Menu.Item as={Link} to="/profile">
+              Profile
+            </Menu.Item>
+          </>
           :
             <>
               <Menu.Item as={Link} to="/signin">

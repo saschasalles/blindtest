@@ -26,7 +26,7 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/">
-              <Home />
+            {isAuthenticated ? <Home/> : <SignIn />}
             </Route>
             <Route path="/signin">
               {isAuthenticated ? <Redirect to="/" /> : <SignIn />}
