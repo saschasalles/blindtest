@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default function Layout({ children }) {
   return (
     <div>
-      <Menu fixed="top"  >
+      <Menu fixed="top" secondary>
         <Container>
           <Menu.Item header>
             <Header as="h2" >
@@ -19,6 +19,9 @@ export default function Layout({ children }) {
 
           <Menu.Item as={Link} to="/">
             Home
+          </Menu.Item>
+          <Menu.Item as={Link} to="/profile">
+            Profile
           </Menu.Item>
         </Container>
       </Menu>

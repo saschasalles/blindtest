@@ -67,7 +67,6 @@ export const signup = (
         console.log(userCreds.user.uid);
         dispatch(getPlayerData());
         
-        
       });
     })
     .catch((err) => {

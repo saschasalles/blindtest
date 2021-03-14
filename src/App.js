@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "../src/pages/SignIn";
 import SignUp from "../src/pages/SignUp";
+import Profile from "../src/pages/Profile";
 import React, { useEffect } from "react";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { store } from "../src/data/store";
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
           </Switch>
         </Layout>

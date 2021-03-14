@@ -6,8 +6,7 @@ export const getPlayerData = () => (dispatch) => {
     dispatch({
       type: playerActions.SET_PLAYER,
       player: data.player,
-    }),
-    alert("Success", "Your account was successfuly created!")
+    })
   );
 };
 
