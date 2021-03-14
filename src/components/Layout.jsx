@@ -5,11 +5,16 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Layout({ children }) {
+  const isAuthenticated = useSelector(
+    (state) => state.app.user !== null
+  );
+
   return (
     <div>
-      <Menu fixed="top" secondary>
+      <Menu fixed="top" >
         <Container>
           <Menu.Item header>
             <Header as="h2" >
@@ -20,9 +25,20 @@ export default function Layout({ children }) {
           <Menu.Item as={Link} to="/">
             Home
           </Menu.Item>
+          { isAuthenticated ? 
           <Menu.Item as={Link} to="/profile">
             Profile
           </Menu.Item>
+          :
+            <>
+              <Menu.Item as={Link} to="/signin">
+                Sign In
+              </Menu.Item>
+              <Menu.Item as={Link} to="/signup">
+                Sign Up
+              </Menu.Item>
+            </>
+          }
         </Container>
       </Menu>
 

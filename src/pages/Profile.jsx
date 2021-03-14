@@ -29,7 +29,7 @@ const Profile = () => {
             Hello {player.name}!
         </Header>
 
-        <Button onPress={() => signOutFromAuth()} >
+        <Button onClick={() => signOutFromAuth(dispatch)} >
             Sign Out
         </Button>
     </div>

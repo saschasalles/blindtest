@@ -10,6 +10,7 @@ import React, { useEffect } from "react";
 import { Provider, useSelector, useDispatch } from "react-redux";
 import { store } from "../src/data/store";
 import { launchApp } from "../src/data/appEffects";
+import { Redirect } from 'react-router-dom';
 
 function App() {
   const isLoading = useSelector((state) => state.app.isLoading);
@@ -28,13 +29,13 @@ function App() {
               <Home />
             </Route>
             <Route path="/signin">
-              <SignIn />
+              {isAuthenticated ? <Redirect to="/" /> : <SignIn />}
             </Route>
             <Route path="/signup">
-              <SignUp />
+              {isAuthenticated ? <Redirect to="/" /> : <SignUp />}
             </Route>
             <Route path="/profile">
-              <Profile />
+              {isAuthenticated ? <Profile/> : <SignIn />}
             </Route>
           </Switch>
         </Layout>

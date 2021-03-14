@@ -4,6 +4,7 @@ import api from "./api";
 import { appActions } from "../data/appActions";
 import { getPlayerData } from "../data/playerEffects";
 
+
 export const initFirebase = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyAoi_dkAeY1FFdLPmWS5voHjbIxegqSzw8",
@@ -33,7 +34,7 @@ export const listenAuthChanged = (handleUser, handleAnonymous) => {
 };
 
 export const signOutFromAuth = () => {
-  firebase.auth().signOut();
+  firebase.auth().signOut()
 };
 
 export const signin = (email, password, dispatch) => {
