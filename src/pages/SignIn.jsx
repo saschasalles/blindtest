@@ -1,16 +1,16 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Button,
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
 } from "semantic-ui-react";
 
-const SingIn = () => (
+const SignIn = () => (
+
   <Grid textAlign="center" verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header> Se connecter</Header>
@@ -43,4 +43,4 @@ const SingIn = () => (
   </Grid>
 );
 
-export default SingIn;
+export default SignIn;

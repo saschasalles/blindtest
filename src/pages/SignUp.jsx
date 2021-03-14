@@ -1,16 +1,26 @@
-import React from "react";
+import { React, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { signin, signup } from "../firebase/firebase";
+
 import {
   Button,
   Form,
   Grid,
   Header,
-  Image,
   Message,
   Segment,
 } from "semantic-ui-react";
 
-const SingIn = () => (
+
+const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [playerName, setPlayerName] = useState("");
+  const [isSigningUp, setIsSigningUp] = useState(false);
+  const dispatch = useDispatch();
+
+  return(
   <Grid textAlign="center" verticalAlign="middle">
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header> S'inscrire </Header>
@@ -43,10 +53,12 @@ const SingIn = () => (
       </Form>
       <Message>
         Already an account ? 😛
-        <Button as={Link} to="/signup" content="Sign In" />
+        <Button as={Link} to="/signin" content="Sign In" />
+
       </Message>
     </Grid.Column>
   </Grid>
-);
+  );
+};
 
-export default SingIn;
+export default SignUp;

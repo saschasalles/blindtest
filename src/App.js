@@ -5,8 +5,19 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "../src/pages/SignIn";
 import SignUp from "../src/pages/SignUp";
+import React, { useEffect } from "react";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import { store } from "../src/data/store";
+import { launchApp } from "../src/data/appEffects";
 
 function App() {
+  const isLoading = useSelector((state) => state.app.isLoading);
+  const isAuthenticated = useSelector((state) => state.app.user !== null);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(launchApp());
+  }, []);
+
   return (
     <div className="App">
       <Router>
@@ -28,4 +39,10 @@ function App() {
   );
 }
 
-export default App;
+const ContextContainer = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+export default ContextContainer;
