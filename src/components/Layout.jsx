@@ -4,8 +4,8 @@ import {
   Menu,
   Segment,
 } from "semantic-ui-react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Layout({ children }) {
   const isAuthenticated = useSelector(

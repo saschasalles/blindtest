@@ -1,8 +1,7 @@
 import { React, useState } from "react";
-import { useDispatch, connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { signin, signup } from "../firebase/firebase";
-import { appActions } from "../data/appActions";
+import { signup } from "../firebase/firebase";
 import {
   Button,
   Form,
@@ -14,7 +13,6 @@ import {
 
 
 const SignUp = () => {
-  const [isSigningUp, setIsSigningUp] = useState(false);
   const [state, setState] = useState({
     email: "",
     password: "",

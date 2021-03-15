@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Card, Container, Menu, Segment } from 'semantic-ui-react';
+import React from "react";
+import { Card, Container } from 'semantic-ui-react';
 import ReactAudioPlayer from 'react-audio-player';
 
 const Question = ({ data, chooseAnswer, startTime }) => {
-  const [sound, setSound] = useState();
   const colors = ['red', 'olive', 'teal', 'purple']
 
   const makeChoice = (answerIndex) => {
@@ -16,14 +15,12 @@ const Question = ({ data, chooseAnswer, startTime }) => {
 
   const Answer = ({ answerIndex, color }) => (
         <Card
-
-            image={{ uri: data.answers[answerIndex] }}
-            description={data.answers[answerIndex]}
-            onClick={() => makeChoice(answerIndex)}
-            color={color}
+          image={{ uri: data.answers[answerIndex] }}
+          description={data.answers[answerIndex]}
+          onClick={() => makeChoice(answerIndex)}
+          color={color}
         />
   );
-
 
   return (
     <Container>

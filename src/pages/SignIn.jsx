@@ -13,7 +13,6 @@ import {
 
 
 const SignIn = () => {
-  const [isSigningIn, setIsSigningIn] = useState(false);
   const [state, setState] = useState({
     email: "",
     password: "",

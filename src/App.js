@@ -1,7 +1,5 @@
-import "./App.css";
 import Layout from "./components/Layout";
-import { Container, Header, Segment } from "semantic-ui-react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "../src/pages/SignIn";
 import SignUp from "../src/pages/SignUp";
@@ -13,7 +11,6 @@ import { launchApp } from "../src/data/appEffects";
 import { Redirect } from 'react-router-dom';
 
 function App() {
-  const isLoading = useSelector((state) => state.app.isLoading);
   const isAuthenticated = useSelector((state) => state.app.user !== null);
   const dispatch = useDispatch();
   useEffect(() => {

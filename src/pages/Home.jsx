@@ -1,6 +1,4 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
-import Layout from "../components/Layout";
 import { useDispatch } from "react-redux";
 import api from "../firebase/api";
 import Gameplay from "../components/GamePlay";

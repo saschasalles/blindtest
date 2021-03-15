@@ -1,8 +1,4 @@
 import firebase from "firebase/app";
-import auth from "firebase/auth";
-import storage from "firebase/storage";
-import api from "./api";
-
 
 const uploadImageAsync = async (uri) => {
   // Why are we using XMLHttpRequest? See:
