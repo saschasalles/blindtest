@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
 import { useDispatch } from "react-redux";
 import api from "../firebase/api";
-// TODO import Gameplay from "../Gameplay";
+import Gameplay from "../components/GamePlay";
 import { incrementPlayerNbPlayed } from "../data/playerActions";
 import {
   Container,
@@ -40,8 +40,6 @@ export default function Home() {
   };
   return (
     <div>
-      <Header as="h1">Hello !</Header>
-
       <Container>
       {answers && answers.length > 0 ? (
           <Segment>
@@ -50,10 +48,12 @@ export default function Home() {
             <Button onClick={() => getNewGame()}>New Game</Button>
           </Segment> 
       ) : questions && questions.length > 0 ? (
-        // <Gameplay questions={questions} finishGame={finishGame} />
-        <p>PAS DE GAMEPLAY</p>
+         <Gameplay questions={questions} finishGame={finishGame} />
       ) : (
-        <Button onClick={() => getNewGame()}>New Game</Button>
+        <div>
+          <Header as="h1">Hello !</Header>
+          <Button onClick={() => getNewGame()}>New Game</Button>
+        </div>
       )}
     </Container>
     </div>
