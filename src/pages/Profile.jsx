@@ -42,7 +42,7 @@ const Profile = () => {
             Hello {player.name}!
         </Header>
 
-        <Segment basic>
+        <Segment basic padded>
           <Form onSubmit={handleSubmit} >
             <Form.Input
                 size="small"
@@ -53,10 +53,10 @@ const Profile = () => {
             />
             <Button type="submit">Modifier</Button>
           </Form>
-          <Button color="red" onClick={() => signOutFromAuth(dispatch)} >
+        </Segment>
+        <Button color="red" onClick={() => signOutFromAuth(dispatch)} >
               Sign Out
           </Button>
-        </Segment>
       </Segment>
     </div>
   );
