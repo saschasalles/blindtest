@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Container, Menu, Grid } from 'semantic-ui-react';
+import { Card, Container, Menu, Segment } from 'semantic-ui-react';
 import ReactAudioPlayer from 'react-audio-player';
 
 const Question = ({ data, chooseAnswer, startTime }) => {
@@ -16,6 +16,7 @@ const Question = ({ data, chooseAnswer, startTime }) => {
 
   const Answer = ({ answerIndex, color }) => (
         <Card
+
             image={{ uri: data.answers[answerIndex] }}
             description={data.answers[answerIndex]}
             onClick={() => makeChoice(answerIndex)}
@@ -28,14 +29,11 @@ const Question = ({ data, chooseAnswer, startTime }) => {
     <Container>
 
     <Card.Group>
-        <Card textAlign="center">
+        <Card textAlign="center" inverted fluid>
             <Card.Content as="h3">
                 {data.question}
             </Card.Content>
-        </Card>
-
-        <Card textAlign="center" basic>
-            <Card.Content>
+            <Card.Content extra>
             <ReactAudioPlayer
                 src={data.audio_url}
                 autoPlay
@@ -45,9 +43,10 @@ const Question = ({ data, chooseAnswer, startTime }) => {
             </Card.Content>
         </Card>
 
+
     </Card.Group>
 
-        <Card.Group>
+        <Card.Group centered>
             <Answer answerIndex={0} color={colors[0]}/>
             <Answer answerIndex={1} color={colors[1]}/>
             <Answer answerIndex={2} color={colors[2]}/>
