@@ -14,16 +14,13 @@ import {
 
 
 const SignUp = () => {
-
   const [isSigningUp, setIsSigningUp] = useState(false);
   const [state, setState] = useState({
     email: "",
     password: "",
     playerName: "",
   })
-
   const dispatch = useDispatch();
-
 
   const handleInputChange = (evt) => {
     const value = evt.target.value;

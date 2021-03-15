@@ -1,23 +1,24 @@
-import * as firebase from "firebase";
-import * as ImagePicker from "expo-image-picker";
+import firebase from "firebase/app";
+import auth from "firebase/auth";
+import storage from "firebase/storage";
 import api from "./api";
+
 
 const uploadImageAsync = async (uri) => {
   // Why are we using XMLHttpRequest? See:
   // https://github.com/expo/expo/issues/2402#issuecomment-443726662
   const blob = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
-      resolve(xhr.response);
-    };
-    xhr.onerror = function (e) {
-      console.log(e);
-      reject(new TypeError("Network request failed"));
-    };
-    xhr.responseType = "blob";
-    xhr.open("GET", uri, true);
-    xhr.send(null);
-  });
+    xhr.onload = function() {
+      resolve(xhr.response); // when BlobModule finishes reading, resolve with the blob
+   };
+   xhr.onerror = function() {
+     reject(new TypeError('Network request failed')); // error occurred, rejecting
+   };
+   xhr.responseType = 'blob'; // use BlobModule's UriHandler
+   xhr.open('GET', uri, true); // fetch the blob from uri in async mode
+   xhr.send(null); // no initial data
+ });
 
   const ref = firebase
     .storage()
@@ -25,39 +26,14 @@ const uploadImageAsync = async (uri) => {
     .child(`avatars/${firebase.auth().currentUser.uid}`);
   const snapshot = await ref.put(blob);
 
-  // We're done with the blob, close and release it
-  blob.close();
 
   return await snapshot.ref.getDownloadURL();
 };
 
-export const openAvatarDialog = async (success, error) => {
-  const {
-    status,
-  } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  if (status !== "granted") {
-    error(
-      "To change your avatar, you need to give the app the permission to access to the camera and the media library!"
-    );
-    return;
-  }
-  // Permissions are OK
-  let result = await ImagePicker.launchImageLibraryAsync({
-    mediaTypes: ImagePicker.MediaTypeOptions.All,
-    allowsEditing: true,
-    aspect: [4, 3],
-    quality: 1,
-  });
-
-  console.log(result);
-
-  if (!result.cancelled) {
-    console.log("Let's upload this", result.uri);
-
-    const avatarUrl = await uploadImageAsync(result.uri);
-
-    console.log("Avatar successfully uploaded", avatarUrl);
-
-    success(avatarUrl);
-  }
+export const openAvatarDialog = async (url, success, error) => {
+  console.log("Let's upload this", url);
+  const avatarUrl = await uploadImageAsync(url);
+  console.log("Avatar successfully uploaded", avatarUrl);
+  success(avatarUrl);
+  return avatarUrl
 };
