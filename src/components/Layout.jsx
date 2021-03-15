@@ -26,7 +26,7 @@ export default function Layout({ children }) {
           { isAuthenticated ? 
           <>
             <Menu.Item as={Link} to="/">
-              Home
+              Accueil
             </Menu.Item>
             <Menu.Item as={Link} to="/profile">
               Profile
@@ -35,10 +35,10 @@ export default function Layout({ children }) {
           :
             <>
               <Menu.Item as={Link} to="/signin">
-                Sign In
+                Inscription
               </Menu.Item>
               <Menu.Item as={Link} to="/signup">
-                Sign Up
+                Connexion
               </Menu.Item>
             </>
           }
@@ -55,8 +55,8 @@ export default function Layout({ children }) {
         style={{ margin: "5em 0em 0em", padding: "5em 0em" }}
       >
         <Container textAlign="center">
-          <h2> Made with ❤️ by Sascha Sallès and Théo Delas</h2>
-          ©2001-2021 copyright us. All right reserved lol.
+          <h2> Fait avec ❤️ par  Sascha Sallès et Théo Delas</h2>
+          ©2001-2021 copyright Théo et Sacha. All right reserved lol.
         </Container>
       </Segment>
     </div>
