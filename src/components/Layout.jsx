@@ -34,10 +34,10 @@ export default function Layout({ children }) {
           </>
           :
             <>
-              <Menu.Item as={Link} to="/signin">
+              <Menu.Item as={Link} to="/signup">
                 Inscription
               </Menu.Item>
-              <Menu.Item as={Link} to="/signup">
+              <Menu.Item as={Link} to="/signin">
                 Connexion
               </Menu.Item>
             </>
